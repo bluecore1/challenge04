@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📜 Passo a Passo do Funcionamento da Aplicação
 
-## Getting Started
+## ✅ Abertura da Aplicação
+- O usuário acessa a aplicação pelo navegador.
+- A página inicial carrega, exibindo o layout principal, que inclui:
+  - Navbar (menu de navegação).
+  - Conteúdo principal (ex.: texto de boas-vindas, cards ou banner).
+  - Footer (se implementado).
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🧭 Navegação pelo Menu
+- O usuário interage com a navbar e pode acessar:
+  - **Página Home:** visão geral da aplicação.
+  - **Página de Listagem:** exibe todos os itens cadastrados (ex.: carros, alertas, produtos).
+  - **Página de Login/Cadastro:** se houver autenticação.
+  - **Outras páginas:** conforme a estrutura definida (ex.: contato, sobre, etc.).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📄 Página de Listagem de Itens
+- A página faz a leitura dos dados (estáticos ou de uma API/local JSON).
+- Os itens são exibidos em formato de **cards responsivos**, contendo:
+  - Imagem representativa do item.
+  - Nome ou título.
+  - Informações resumidas (ex.: preço, categoria, status).
+  - Botão ou link para acessar os **detalhes** do item.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔍 Rota Dinâmica — Página de Detalhes
+- Ao clicar em um item da listagem, o usuário é redirecionado para uma página dinâmica (`[id].tsx`).
+- Nesta página, são exibidos detalhes completos do item selecionado, como:
+  - Imagens maiores.
+  - Descrição detalhada.
+  - Características específicas (ex.: ano, modelo, status, preço, etc.).
+  - Botões de ação, como voltar, comprar, editar (se for o caso).
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔐 Formulários de Login e Cadastro (Se houver)
+- O usuário pode acessar a página de **Login** ou **Cadastro**.
+- Preenche os campos obrigatórios, que possuem validações (ex.: campos vazios, formato de e-mail).
+- Ao submeter, o sistema processa os dados e redireciona para a área protegida (ou exibe mensagens de erro/sucesso).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📱 Responsividade e Acessibilidade
+- A aplicação é totalmente responsiva, adaptando-se a:
+  - Dispositivos mobile (celulares, tablets).
+  - Desktop e telas maiores.
+- Elementos são acessíveis, garantindo boa experiência para todos os usuários.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚪 Encerramento ou Logout
+- O usuário pode navegar livremente, voltar à página inicial ou, se autenticado, fazer logout (se implementado).
+
+---
+
+## 🔁 Fluxo Resumido
