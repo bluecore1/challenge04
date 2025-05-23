@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./styles.css";
+import { getAlertas, addAlerta } from "@/services/api/alertasService";
 
 type Alert = {
   id: number;
@@ -14,21 +15,7 @@ type Alert = {
 
 export default function AlertPage() {
   const router = useRouter();
-
-  const [alerts, setAlerts] = useState<Alert[]>([
-    {
-      id: 1,
-      platform: "Plataforma 2",
-      date: "2024-03-14",
-      message: "Pessoa detectada além da linha de segurança",
-    },
-    {
-      id: 2,
-      platform: "Plataforma 1",
-      date: "2024-03-15",
-      message: "Pessoa detectada além da linha de segurança",
-    },
-  ]);
+  const [alerts, setAlerts] = useState<Alert[]>([]);
 
   const [selectedPlatform, setSelectedPlatform] = useState("Todos");
   const [selectedDate, setSelectedDate] = useState("");
@@ -36,6 +23,14 @@ export default function AlertPage() {
   const [newDate, setNewDate] = useState("");
   const [newPlatform, setNewPlatform] = useState("");
   const [newMessage, setNewMessage] = useState("Pessoa além da linha amarela");
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getAlertas();
+      setAlerts(data);
+    }
+    fetchData();
+  }, []);
 
   const handleLogout = () => {
     router.push("/");
@@ -47,20 +42,14 @@ export default function AlertPage() {
       (selectedDate === "" || alert.date === selectedDate)
   );
 
-  const handleAddAlert = () => {
+  const handleAddAlert = async () => {
     if (!newDate || !newPlatform || !newMessage) {
       alert("Preencha todos os campos para registrar um alerta!");
       return;
     }
 
-    const newAlert: Alert = {
-      id: alerts.length + 1,
-      platform: newPlatform,
-      date: newDate,
-      message: newMessage,
-    };
-
-    setAlerts([...alerts, newAlert]);
+    const novo = await addAlerta(newPlatform, newDate, newMessage);
+    setAlerts((prev) => [...prev, novo]);
 
     setNewDate("");
     setNewPlatform("");
@@ -72,12 +61,7 @@ export default function AlertPage() {
       {/* HEADER */}
       <header className="header">
         <div className="login-logo">
-          <Image
-            src="/imagens/logo-ccr.png"
-            alt="Logo CCR"
-            width={200}
-            height={30}
-          />
+          <Image src="/imagens/logo-ccr1.png" alt="Logo CCR" width={200} height={30} />
         </div>
         <nav>
           <button className="botao1">
@@ -104,10 +88,7 @@ export default function AlertPage() {
         <section>
           <h2>Filtrar Alertas</h2>
           <div className="filtro">
-            <select
-              value={selectedPlatform}
-              onChange={(e) => setSelectedPlatform(e.target.value)}
-            >
+            <select value={selectedPlatform} onChange={(e) => setSelectedPlatform(e.target.value)}>
               <option value="Todos">Todos</option>
               <option value="Plataforma 1">Plataforma 1</option>
               <option value="Plataforma 2">Plataforma 2</option>
@@ -170,11 +151,7 @@ export default function AlertPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              src="/icones/linkedin.svg"
-              alt="LinkedIn"
-              className="icone-social"
-            />
+            <img src="/icones/linkedin.svg" alt="LinkedIn" className="icone-social" />
             LinkedIn
           </a>
           <a
@@ -182,11 +159,7 @@ export default function AlertPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              src="/icones/twitter.svg"
-              alt="Twitter"
-              className="icone-social"
-            />
+            <img src="/icones/twitter.svg" alt="Twitter" className="icone-social" />
             Twitter
           </a>
           <a
@@ -194,11 +167,7 @@ export default function AlertPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              src="/icones/instagram.svg"
-              alt="Instagram"
-              className="icone-social"
-            />
+            <img src="/icones/instagram.svg" alt="Instagram" className="icone-social" />
             Instagram
           </a>
         </div>

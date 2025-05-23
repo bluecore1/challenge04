@@ -18,7 +18,7 @@ export default function MonitoramentoPage() {
       <header className="bg-black text-white p-4 flex justify-between items-center">
         <div className="login-logo">
           <div className="login-logo-img">
-            <Image src="/imagens/logo-ccr.png" alt="Logo" width={200} height={30} />
+            <Image src="/imagens/logo-ccr1.png" alt="Logo" width={200} height={30} />
           </div>
         </div>
         <nav>
