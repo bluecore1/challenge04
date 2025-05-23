@@ -8,7 +8,7 @@ export default function Login() {
     <div className="container">
       
       <div className="login-logo">
-        <Image src="/imagens/Logo-CCR.PNG" alt="Logo CCR" width={200} height={30} />
+        <Image src="/imagens/logo-ccr.png" alt="Logo CCR" width={200} height={30} />
       </div>
 
       <section className="login">
