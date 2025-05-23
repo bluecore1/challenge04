@@ -73,7 +73,7 @@ export default function AlertPage() {
       <header className="header">
         <div className="login-logo">
           <Image
-            src="/imagens/logo-CCR.png"
+            src="/imagens/Logo-CCR.PNG"
             alt="Logo CCR"
             width={200}
             height={30}

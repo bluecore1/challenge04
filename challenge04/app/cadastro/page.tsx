@@ -7,7 +7,7 @@ export default function cadastro() {
         <div className="container">
             {/* Logo da CCR */}
             <div className="login-logo">
-                <Image src="/imagens/logo-CCR.png" alt="Logo CCR" width={200} height={30} />
+                <Image src="/imagens/Logo-CCR.PNG" alt="Logo CCR" width={200} height={30} />
             </div>
 
             <section className="login">
